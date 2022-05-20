@@ -11,10 +11,16 @@ function App() {
     .then(data=>setItemsList(data))
   },[])  
 
+  function deleteItem(id){
+    console.log(id)
+    const afterDeleteList =itemsList.filter(item =>item.id !== id)
+    setItemsList(afterDeleteList)
+  }
+
   return (
     <div className="app">
       <Header />
-      <ListingsContainer itemsList={itemsList} />
+      <ListingsContainer itemsList={itemsList} deleteItem={deleteItem} />
     </div>
   );
 }
